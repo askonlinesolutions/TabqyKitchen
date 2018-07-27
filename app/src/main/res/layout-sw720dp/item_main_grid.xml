@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/size_320"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_background_white"
+    android:layout_marginBottom="@dimen/size_5"
+    android:layout_marginRight="@dimen/size_5"
+    android:padding="@dimen/size_10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_55"
+        android:id="@+id/item_main_grid_layout_top"
+        android:background="@drawable/shape_background_theme_blue"
+        android:paddingTop="@dimen/size_5"
+        android:paddingBottom="@dimen/size_5"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_main_grid_layout_top_left"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_alignParentLeft="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_main_grid_title_name"
+                android:text="Table: 02"
+                android:textSize="@dimen/size_14"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#237777"
+                android:textSize="@dimen/size_13"
+                android:textColor="@color/colorWhite"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true" />
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_main_grid_image"
+            android:src="@drawable/ic_table"
+            android:layout_marginLeft="@dimen/size_15"
+            android:layout_toRightOf="@+id/item_main_grid_layout_top_left"
+            android:layout_centerInParent="true"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_zoom_out"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/size_15"
+        android:paddingBottom="@dimen/size_15" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timer"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/size_14"
+                android:layout_alignParentLeft="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_main_grid_time_left"
+                android:text="10:00"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/size_14"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/size_10"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:id="@+id/item_main_grid_layout_timer"
+            android:background="@drawable/shape_border_theme_blue"
+            android:layout_marginTop="@dimen/size_10">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_10"
+                android:id="@+id/item_main_grid_timer"
+                android:background="@color/colorThemeBlue"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
