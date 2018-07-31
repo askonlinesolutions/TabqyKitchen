@@ -190,7 +190,7 @@ public class AdapterMainList extends RecyclerView.Adapter<AdapterMainList.MyView
             holder.layout_main.startAnimation(mAnimation);
             mAnimation.start();
         }
-
+//a
 
         holder.layout_main.bringToFront();
 
