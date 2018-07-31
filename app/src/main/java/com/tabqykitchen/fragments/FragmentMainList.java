@@ -122,15 +122,15 @@ public class FragmentMainList extends Fragment implements AdapterMainList.Interf
         arr_order_title.add("Online Order");
 
         arr_item_width.clear();
-        arr_item_width.add("0");
-        arr_item_width.add("0");
-        arr_item_width.add("1");
-        arr_item_width.add("0");
-        arr_item_width.add("0");
-        arr_item_width.add("0");
-        arr_item_width.add("0");
-        arr_item_width.add("0");
-        arr_item_width.add("0");
+        arr_item_width.add("280");
+        arr_item_width.add("280");
+        arr_item_width.add("360");
+        arr_item_width.add("280");
+        arr_item_width.add("280");
+        arr_item_width.add("280");
+        arr_item_width.add("280");
+        arr_item_width.add("280");
+        arr_item_width.add("280");
 
         setMyAdapter();
     }

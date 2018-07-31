@@ -170,7 +170,7 @@ public class AdapterMainList extends RecyclerView.Adapter<AdapterMainList.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        final int focus; final boolean hasFocus;
+       /* final int focus; final boolean hasFocus;
         if(arr_item_width.equals("1")){
             focus = R.anim.enlarge;
             hasFocus = true;
@@ -192,12 +192,13 @@ public class AdapterMainList extends RecyclerView.Adapter<AdapterMainList.MyView
         }
 //a
 
-        holder.layout_main.bringToFront();
+        holder.layout_main.bringToFront();*/
 
 
 
 
 
+       holder.layout_main.getLayoutParams().width = Integer.parseInt(arr_item_width.get(position));
         holder.tv_title.setText(arr_order_title.get(position));
 
 
