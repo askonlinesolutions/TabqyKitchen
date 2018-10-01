@@ -55,6 +55,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/item_main_grid_zoom"
             android:src="@drawable/ic_zoom_out"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"/>

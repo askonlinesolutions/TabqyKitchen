@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +25,7 @@ import com.tabqykitchen.R;
 import com.tabqykitchen.adapter.AdapterCatTop;
 import com.tabqykitchen.fragments.FragmentMainGrid;
 import com.tabqykitchen.fragments.FragmentMainList;
+import com.tabqykitchen.fragments.SettingsFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private PopupWindow popupwindow_cateory, popupWindow_all_order;
-    private ImageView iv_menu, iv_settings, iv_logout;
+    private  ImageView iv_settings, iv_logout;
+    public static ImageView iv_menu;
     private String selected_category, selected_order;
 
     private void init(){
@@ -169,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private boolean top_menu_status = true;
+    public static boolean top_menu_status = true;
     public void top_icons(View view){
         int id = view.getId();
 
@@ -182,11 +185,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 iv_menu.setImageResource(R.drawable.ic_menu);
                 top_menu_status = true;
-
                 BaseClass.callFragment(new FragmentMainGrid(), null, getSupportFragmentManager());
             }
         } else if(id == R.id.top_settings){
-            BaseClass.showToast(getApplicationContext(), "Settings");
+            BaseClass.callFragment(new SettingsFragment(), null, getSupportFragmentManager());
+//            BaseClass.showToast(getApplicationContext(), "Settings");
+//            iv_menu.setImageResource(R.drawable.ic_grid);
+//            top_menu_status = false;
         } else if(id == R.id.top_logout){
             BaseClass.showToast(getApplicationContext(), "Logout");
         } else{
@@ -203,6 +208,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             catspinner.setText(name.get(position));
             Toast.makeText(this, ""+name.get(position), Toast.LENGTH_SHORT).show();
             popupwindow_cateory.dismiss();
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        /*
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if(count==1){
+            finish();
+        } else {
+//            getSupportFragmentManager().popBackStackImmediate();
+            super.onBackPressed();
+        }
+*/
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frame);
+        String tag = fragment.getClass().getName();
+        if(tag.equals(new FragmentMainGrid().getClass().getName())){
+            finish();
+        } else if(tag.equals(new FragmentMainList().getClass().getName())){
+            BaseClass.callFragment(new FragmentMainGrid(), null, getSupportFragmentManager());
+        }  else if(count == 0){
+            BaseClass.callFragment(new FragmentMainGrid(), null, getSupportFragmentManager());
+        } else{
+            super.onBackPressed();
         }
 
     }

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.tabqykitchen.Helper.BaseClass;
 import com.tabqykitchen.R;
+import com.tabqykitchen.activities.MainActivity;
 import com.tabqykitchen.adapter.AdapterMainGrid;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentMainGrid extends Fragment {
+public class FragmentMainGrid extends Fragment implements AdapterMainGrid.InterfaceAdapterMainGrid {
 
     public FragmentMainGrid() {
         // Required empty public constructor
@@ -52,6 +53,14 @@ public class FragmentMainGrid extends Fragment {
                 BaseClass.calculateNoOfRows(getActivity()), GridLayoutManager.HORIZONTAL, false));
 
         addData();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ((MainActivity) getActivity()).iv_menu.setImageResource(R.drawable.ic_menu);
+
     }
 
     private void addData(){
@@ -99,6 +108,20 @@ public class FragmentMainGrid extends Fragment {
 
     private int time = 1;
     private void setMyAdapter(){
-        rv_grid.setAdapter(new AdapterMainGrid(getContext(), arr_total_time, arr_order_title, time));
+        rv_grid.setAdapter(new AdapterMainGrid(getContext(), arr_total_time, arr_order_title, time, this));
+    }
+
+    @Override
+    public void method_AdapterMainGrid(int position) {
+
+        ((MainActivity) getActivity()).iv_menu.setImageResource(R.drawable.ic_grid);
+        ((MainActivity) getActivity()).top_menu_status = false;
+
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("position_key", position);
+
+        BaseClass.callFragment(new FragmentMainList(), bundle, getFragmentManager());
+
     }
 }

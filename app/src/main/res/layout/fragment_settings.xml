@@ -1,14 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="@dimen/size_80"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingRight="@dimen/size_20">
 
-</FrameLayout>
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Order notification sound"
+            android:textSize="@dimen/size_20"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/view_black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_80"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingRight="@dimen/size_20">
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Sound"
+            android:textSize="@dimen/size_20"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/view_black"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_80"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingRight="@dimen/size_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time until warning color sound"
+            android:textSize="@dimen/size_20"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30 Seconds"
+            android:textSize="@dimen/size_20"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/view_black"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_80"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingRight="@dimen/size_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time until late color sound"
+            android:textSize="@dimen/size_20"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 Minute"
+            android:textSize="@dimen/size_20"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/view_black"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_80"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingRight="@dimen/size_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Display Order"
+            android:textSize="@dimen/size_20"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="@dimen/size_150"
+            android:layout_height="@dimen/size_40"
+            android:text="Take Away"
+            android:textSize="@dimen/size_14"
+            android:textColor="@color/colorWhite"
+            android:gravity="center_vertical|start"
+            android:paddingLeft="@dimen/size_10"
+            android:background="@drawable/shape_background_theme_orange"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/view_black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_80"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingRight="@dimen/size_20">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:textSize="@dimen/size_20"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -14,5 +14,6 @@
 
     <color name="text_color">#454545</color>
     <color name="view">#ECF0F1</color>
+    <color name="view_black">#4D4D4D</color>
 
 </resources>
