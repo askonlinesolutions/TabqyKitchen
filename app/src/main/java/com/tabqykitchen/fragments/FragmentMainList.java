@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.tabqykitchen.Helper.BaseClass;
 import com.tabqykitchen.R;
+import com.tabqykitchen.activities.MainActivity;
 import com.tabqykitchen.adapter.AdapterMainList;
 
 import java.util.ArrayList;
@@ -35,11 +36,18 @@ public class FragmentMainList extends Fragment implements AdapterMainList.Interf
         return inflater.inflate(R.layout.fragment_fragment_main_list, container, false);
     }
 
+    private int zoom_position = 999;
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        Bundle bundle= new Bundle();
+        bundle = getArguments();
+        if(bundle != null){
+            zoom_position = bundle.getInt("position_key");
+        }
         init();
+
     }
 
     private RecyclerView rv_list;
@@ -58,6 +66,14 @@ public class FragmentMainList extends Fragment implements AdapterMainList.Interf
     private ArrayList<String> arr_total_time = new ArrayList<>();
     private ArrayList<String> arr_order_title = new ArrayList<>();
     private ArrayList<String> arr_item_width = new ArrayList<>();
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ((MainActivity) getActivity()).iv_menu.setImageResource(R.drawable.ic_grid);
+
+    }
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
@@ -122,24 +138,39 @@ public class FragmentMainList extends Fragment implements AdapterMainList.Interf
         arr_order_title.add("Online Order");
 
         arr_item_width.clear();
-        arr_item_width.add("280");
-        arr_item_width.add("280");
-        arr_item_width.add("360");
-        arr_item_width.add("280");
-        arr_item_width.add("280");
-        arr_item_width.add("280");
-        arr_item_width.add("280");
-        arr_item_width.add("280");
-        arr_item_width.add("280");
+        arr_item_width.add("320");
+        arr_item_width.add("320");
+        arr_item_width.add("320");
+        arr_item_width.add("320");
+        arr_item_width.add("320");
+        arr_item_width.add("320");
+        arr_item_width.add("320");
+        arr_item_width.add("320");
+        arr_item_width.add("320");
+
+        if(zoom_position != 999){
+            for(int i=0; i<arr_item_width.size(); i++){
+                if(zoom_position == i){
+                    arr_item_width.set(zoom_position, "380");
+                } else{
+                    arr_item_width.set(i, "260");
+                }
+            }
+        }
 
         setMyAdapter();
     }
 
     AdapterMainList adapterMainList;
-    private void setMyAdapter(){
+    private void setMyAdapter() {
         adapterMainList = new AdapterMainList(getContext(), arr_order_title, arr_item_width, listDataHeader,
                 listDataChild, listDataChild1, this, this, getActivity());
         rv_list.setAdapter(adapterMainList);
+
+        if (zoom_position != 999) {
+            rv_list.scrollToPosition(zoom_position);
+            adapterMainList.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -156,5 +187,19 @@ public class FragmentMainList extends Fragment implements AdapterMainList.Interf
     @Override
     public void method_AdapterMainListClick(int position) {
 
+        if(!arr_item_width.get(position).equals("380")) {
+            for (int i = 0; i < arr_item_width.size(); i++) {
+                if (i == position) {
+                    arr_item_width.set(i, "380");
+                } else {
+                    arr_item_width.set(i, "260");
+                }
+            }
+        } else {
+            for (int i = 0; i < arr_item_width.size(); i++) {
+                arr_item_width.set(i, "320");
+            }
+        }
+        adapterMainList.notifyDataSetChanged();
     }
 }

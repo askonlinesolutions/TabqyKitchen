@@ -25,13 +25,18 @@ public class AdapterMainGrid extends RecyclerView.Adapter<AdapterMainGrid.MyView
     private ArrayList<String> arr_total_time = new ArrayList<>();
     private ArrayList<String> arr_order_title = new ArrayList<>();
     private int time;
+    private InterfaceAdapterMainGrid click;
 
+    public interface InterfaceAdapterMainGrid{
+        public void method_AdapterMainGrid(int position);
+    }
     public AdapterMainGrid(Context context, ArrayList<String> arr_total_time, ArrayList<String> arr_order_title,
-                           int time){
+                           int time, InterfaceAdapterMainGrid click){
         this.context = context;
         this.arr_total_time = arr_total_time;
         this.arr_order_title = arr_order_title;
         this.time = time;
+        this.click = click;
 
 //        String s = "";
 //        for(int i=0; i<arr_total_time.size(); i++){
@@ -45,17 +50,26 @@ public class AdapterMainGrid extends RecyclerView.Adapter<AdapterMainGrid.MyView
         public TextView tv_timer, tv_time_left, tv_title;
         public RelativeLayout layout_top;
         public LinearLayout layout_timer;
-        public ImageView iv;
+        public ImageView iv, iv_zoom;
 
         public MyViewHolder(View view) {
             super(view);
 
             tv_title = view.findViewById(R.id.item_main_grid_title_name);
             iv = view.findViewById(R.id.item_main_grid_image);
+            iv_zoom = view.findViewById(R.id.item_main_grid_zoom);
             tv_timer = view.findViewById(R.id.item_main_grid_timer);
             tv_time_left = view.findViewById(R.id.item_main_grid_time_left);
             layout_top = view.findViewById(R.id.item_main_grid_layout_top);
             layout_timer = view.findViewById(R.id.item_main_grid_layout_timer);
+
+            iv_zoom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    click.method_AdapterMainGrid(getAdapterPosition());
+                }
+            });
 
         }
     }

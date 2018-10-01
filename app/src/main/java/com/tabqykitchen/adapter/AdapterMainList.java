@@ -66,11 +66,13 @@ public class AdapterMainList extends RecyclerView.Adapter<AdapterMainList.MyView
         public TextView tv_timer, tv_time_left, tv_title, tv_btn;
         public RelativeLayout layout_top, layout_main;
         public LinearLayout layout_timer, layout_bottom_1, layout_bottom_2;
-        public ImageView iv;
+        public ImageView iv, iv_zoom;
 
 
         public MyViewHolder(final View view) {
             super(view);
+
+            iv_zoom = view.findViewById(R.id.item_main_list_zoom_out);
 
             tv_title = view.findViewById(R.id.item_main_list_title_name);
             iv = view.findViewById(R.id.item_main_list_image);
@@ -89,7 +91,7 @@ public class AdapterMainList extends RecyclerView.Adapter<AdapterMainList.MyView
             expandableListView.setOnGroupClickListener(this);
 
 
-            view.setOnClickListener(new View.OnClickListener() {
+            iv_zoom.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 //                    Animation anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_tv);
@@ -190,7 +192,7 @@ public class AdapterMainList extends RecyclerView.Adapter<AdapterMainList.MyView
             holder.layout_main.startAnimation(mAnimation);
             mAnimation.start();
         }
-
+// a
 
         holder.layout_main.bringToFront();*/
 
@@ -199,7 +201,15 @@ public class AdapterMainList extends RecyclerView.Adapter<AdapterMainList.MyView
 
 
        holder.layout_main.getLayoutParams().width = Integer.parseInt(arr_item_width.get(position));
-        holder.tv_title.setText(arr_order_title.get(position));
+
+       if(arr_item_width.get(position).equals("380")){
+           holder.iv_zoom.setImageResource(R.drawable.ic_zoom_in);
+       } else {
+           holder.iv_zoom.setImageResource(R.drawable.ic_zoom_out);
+       }
+
+
+       holder.tv_title.setText(arr_order_title.get(position));
 
 
 
